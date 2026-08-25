@@ -24,9 +24,8 @@ export default defineConfig(
       },
     },
   },
-
   {
-    files: ['tests/**'],
+    files: ['tests/**/*.ts'],
     extends: [playwright.configs['flat/recommended']],
      rules: {
             ...playwright.configs['flat/recommended'].rules,

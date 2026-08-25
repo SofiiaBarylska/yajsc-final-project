@@ -6,6 +6,6 @@ export class HeaderFragments {
 
     constructor(page: Page) {
         this.page = page;
-        this.navMenu = this.page.locator('[data-test="nav-menu"]');
+        this.navMenu = page.getByTestId("nav-menu");
     }
 }
