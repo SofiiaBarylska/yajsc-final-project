@@ -1,7 +1,6 @@
 import { test, expect } from "@playwright/test";
 import { HomePage } from "../pages/home.page";
 
-
 const sortOptions = [
   {
     name: "Name (A - Z)",
