@@ -19,4 +19,9 @@ export class ProductPage {
     this.productPrice = this.page.getByTestId("unit-price");
     this.alert = page.getByRole("alert");
   }
+
+  async addProductToCart(): Promise<void> {
+    await this.addToCart.click();
+    await this.alert.waitFor();
+  }
 }

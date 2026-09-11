@@ -12,4 +12,8 @@ export class HeaderFragments {
     this.cartQuantity = page.getByTestId("cart-quantity");
     this.cart = page.getByTestId("nav-cart");
   }
+
+  async goToCart(): Promise<void> {
+    await this.cart.click();
+  }
 }
