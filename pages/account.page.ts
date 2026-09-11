@@ -13,4 +13,4 @@ export class AccountPage {
     this.pageTitle = page.getByRole("heading", { name: "My account" });
     this.navMenu = page.getByTestId("nav-menu");
   }
-};
+}
