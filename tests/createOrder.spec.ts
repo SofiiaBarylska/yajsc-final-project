@@ -1,6 +1,6 @@
 import { expect } from "@playwright/test";
 import { test } from "../fixtures";
-
+import { card } from "../test-data/cards";
 
 test("Verify that user can create order successfull", async ({ loggedInApp }) => {
     await loggedInApp.page.goto("/");
@@ -23,9 +23,7 @@ test("Verify that user can create order successfull", async ({ loggedInApp }) =>
     await loggedInApp.checkoutPage.fillBillingAddress();
     await loggedInApp.checkoutPage.goToPaymentStep();
     await loggedInApp.checkoutPage.choosePaymentMethod();
-    await loggedInApp.checkoutPage.fillPaymentDetails();
+    await loggedInApp.checkoutPage.fillPaymentDetails(card);
     await loggedInApp.checkoutPage.confirmPayment();
     await loggedInApp.checkoutPage.orderIsSuccessful();
-
-
 });

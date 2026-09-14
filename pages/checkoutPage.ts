@@ -1,5 +1,5 @@
 import { expect, Locator, Page } from "@playwright/test";
-
+import { Card } from "../test-data/cards";
 
 export class CheckoutPage {
   page: Page;
@@ -57,19 +57,11 @@ export class CheckoutPage {
     await this.houseNumber.fill("10");
     await this.state.fill("Rivne");
   }
-  async fillPaymentDetails(): Promise<void> {
-    await this.creditCard.fill("1111-1111-1111-1111");
-
-    const expirationDate = new Date();
-    expirationDate.setMonth(expirationDate.getMonth() + 3);
-
-    const month = String(expirationDate.getMonth() + 1).padStart(2, "0");
-    const year = expirationDate.getFullYear();
-
-    await this.expirationDate.fill(`${month}/${year}`);
-
-    await this.cvvCode.fill("111");
-    await this.holderName.fill("Jane Doe");
+   async fillPaymentDetails(card: Card): Promise<void> {
+    await this.creditCard.fill(card.cardNumber);
+    await this.expirationDate.fill(card.expirationDate);
+    await this.cvvCode.fill(card.cvv);
+    await this.holderName.fill(card.holderName);
   }
   async confirmPayment(): Promise<void> {
     await this.confirmBtn.click();
@@ -77,8 +69,6 @@ export class CheckoutPage {
 
   async orderIsSuccessful(): Promise<void> {
     await expect(this.successfulMessage).toBeVisible();
-    await expect(this.successfulMessage).toHaveText(
-      "Payment was successful",
-    );
+    await expect(this.successfulMessage).toHaveText("Payment was successful");
   }
 };

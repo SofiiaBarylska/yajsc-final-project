@@ -23,8 +23,6 @@ export class AllPages {
         this.cartPage = new CartPage(page);
         this.homePage = new HomePage(page);
         this.productPage = new ProductPage(page);
-        this.checkoutPage = new CheckoutPage(page);
-
-        
+        this.checkoutPage = new CheckoutPage(page); 
     }
 }
