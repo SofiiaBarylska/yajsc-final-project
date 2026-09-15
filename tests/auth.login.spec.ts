@@ -13,5 +13,4 @@ test("login to the site", async ({ page }) => {
   await expect(page).toHaveURL("/account");
 
   await page.context().storageState({ path: authFile });
-  
 });

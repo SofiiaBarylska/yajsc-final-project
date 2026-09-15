@@ -43,4 +43,17 @@ export class HomePage {
 
     await this.productName.filter({ hasText: category }).first().waitFor();
   }
+
+  async getFirstProductName(): Promise<string> {
+    return (await this.productName.first().innerText()).trim();
+  }
+  async getFirstProductPrice(): Promise<number> {
+    const price = await this.productPrice.first().innerText();
+
+    return Number(price.replace("$", "").trim());
+  }
+
+  async selectFirstProduct(): Promise<void> {
+    await this.productName.first().click();
+  }
 }

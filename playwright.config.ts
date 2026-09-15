@@ -42,7 +42,7 @@ export default defineConfig({
       use: {
         ...devices["Desktop Chrome"],
       },
-      dependencies: ["auth"],
+    //  dependencies: ["auth"],
     },
   
 
