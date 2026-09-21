@@ -1,7 +1,7 @@
-import { test, expect } from "@playwright/test";
+import { test, expect } from "../../fixtures";
 
-test("Verify that 20 products are displayed", async ({ page }) => {
-  await page.route(
+test("Verify that 20 products are displayed", async ({ allPages }) => {
+  await allPages.page.route(
     "https://api.practicesoftwaretesting.com/products*",
     async (route) => {
       const response = await route.fetch();
@@ -17,6 +17,6 @@ test("Verify that 20 products are displayed", async ({ page }) => {
     },
   );
 
-  await page.goto("https://practicesoftwaretesting.com/");
-  await expect(page.getByTestId("product-name")).toHaveCount(20);
+  await allPages.page.goto("https://practicesoftwaretesting.com/");
+  await expect(allPages.productPage.productName).toHaveCount(20);
 });
