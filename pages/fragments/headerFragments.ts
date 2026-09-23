@@ -16,4 +16,8 @@ export class HeaderFragments {
   async goToCart(): Promise<void> {
     await this.cart.click();
   }
+
+  async isUserLoggedIn(userName: string): Promise<boolean> {
+    return await this.navMenu.getByText(userName).isVisible();
+  }
 }
