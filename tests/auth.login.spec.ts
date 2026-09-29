@@ -5,12 +5,19 @@ import path from "path";
 
 const authFile = path.join(__dirname, "../playwright/.auth/user.json");
 
-test("login to the site", async ({ page }) => {
+test("login to the site", { tag: "@smoke" }, async ({ page }) => {
   const loginPage = new LoginPage(page);
 
-  await page.goto("/auth/login");
-  await loginPage.login(customer.email, customer.password);
-  await expect(page).toHaveURL("/account");
+  await test.step("Open login page", async () => {
+    await page.goto("/auth/login");
+  });
 
-  await page.context().storageState({ path: authFile });
+  await test.step("Login with valid credentials", async () => {
+    await loginPage.login(customer.email, customer.password);
+  });
+
+  await test.step("Verify successful login and save authentication state", async () => {
+    await expect(page).toHaveURL("/account");
+    await page.context().storageState({ path: authFile });
+  });
 });

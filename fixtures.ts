@@ -18,14 +18,15 @@ export const test = base.extend<MyFixtures>({
         },
       },
     );
+
     const jsonData = await resp.json();
     let token = jsonData.access_token;
-
     await allPages.page.goto("/");
 
     await allPages.page.evaluate((token) => {
       localStorage.setItem("auth-token", token);
     }, token);
+
     await allPages.page.reload();
     await use(allPages);
   },
