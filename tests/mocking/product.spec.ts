@@ -20,7 +20,7 @@ test("Verify that 20 products are displayed", { tag: "@regression" }, async ({ a
     });
 
     await test.step("Open homepage", async () => {
-      await allPages.page.goto("https://practicesoftwaretesting.com/");
+      await allPages.page.goto("/");
     });
 
     await test.step("Verify that 20 products are displayed", async () => {

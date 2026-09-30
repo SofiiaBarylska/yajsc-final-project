@@ -1,9 +1,6 @@
 import { defineConfig, devices } from '@playwright/test';
 import { WEB_URL } from './config/baseConfig';
 
-// console.log('SECRET =' + process.env.MY_SECRET);
-// console.log('VARIABLE =' + process.env.MY_VAR);
-
 /**
  * Read environment variables from file.
  * https://github.com/motdotla/dotenv
