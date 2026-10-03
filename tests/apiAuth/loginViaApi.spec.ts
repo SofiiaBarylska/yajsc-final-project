@@ -3,7 +3,7 @@ import { customer } from "../../test-data/users";
 import { AuthService } from "../../pages/api/authService";
 import { HeaderFragments } from "../../pages/fragments/headerFragments";
 
-test("Verify login can be performed successfully", async ({ page, request}) => {
+test("Verify login can be performed successfully", {tag: "@regression"}, async ({ page, request}) => {
   const header = new HeaderFragments(page);
   await page.goto("/");
 
